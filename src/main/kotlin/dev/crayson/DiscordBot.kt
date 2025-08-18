@@ -4,6 +4,7 @@ import de.exlll.configlib.YamlConfigurationProperties
 import de.exlll.configlib.YamlConfigurationStore
 import dev.crayson.config.Config
 import dev.crayson.config.serializer.KotlinStringSerializer
+import dev.crayson.event.registerJoinEvent
 import dev.minn.jda.ktx.jdabuilder.light
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.ChunkingFilter
@@ -48,6 +49,7 @@ class DiscordBot {
         instance = this
 
         jda.apply {
+            registerJoinEvent()
         }
 
         lamp.accept(JDAVisitors.slashCommands(jda))
